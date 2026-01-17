@@ -1,9 +1,0 @@
-Title: MEM - HackTool - LaZagne
-Time: {{event_time}}
-Computer: {{hostname}}
-User: {{username}}
-File Path: {{file_path}}
-Command Line: {{command_line}}
-
-Detection Link:
-{{link}}
