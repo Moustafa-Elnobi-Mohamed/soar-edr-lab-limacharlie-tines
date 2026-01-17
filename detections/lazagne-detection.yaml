@@ -1,0 +1,32 @@
+detect:
+  events:
+    - NEW_PROCESS
+    - EXISTING_PROCESS
+op: and
+rules:
+  - op: is
+    path: event/PLATFORM
+    value: windows
+  - op: or
+    rules:
+      - op: ends with
+        path: event/FILE_PATH
+        value: LaZagne.exe
+        case sensitive: false
+      - op: contains
+        path: event/COMMAND_LINE
+        value: LaZagne
+        case sensitive: false
+      - op: is
+        path: event/HASH
+        value: <PUT_HASH_HERE>
+
+response:
+  - action: report
+    metadata:
+      author: MEM
+      description: Detects LaZagne credential-dumping activity
+      falsepositives: Low in lab; validate executable path and hash
+      level: high
+      tags:
+        - attack.credentials_access
